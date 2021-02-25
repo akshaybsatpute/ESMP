@@ -7,20 +7,77 @@ body
     background-position: center;
     font-family: sans-serif;
 }
+.header { 
+            position: sticky; 
+            top:0; 
+        } 
 #videoele
 {
     width: 440px;
     height: 200px;
     background-color: #666;
 }
-#text
+.switch
 {
-    padding-left: 15px;
-    width: 290px;
-    height: 40px;
-    margin-left: 790px;
-    margin-top: -190px;
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height:35px;
+ 
+   
 
+    
+}
+.stk
+{
+    position: sticky;top: 0;
+}
+.tab{
+        width: 250px;
+    height:38px;
+    padding: 12px;
+}
+.switch input{display: none}
+.slider:before
+{
+    position: absolute;
+    content: "";
+    height: 25px;
+    width:30px;
+    left:4px;
+    bottom: 1px;
+    top: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50px; 
+}
+input:checked + .slider
+{
+    background-color:red;
+}
+input:checked + .slider:before
+{
+    transform: translateX(30px);
+}
+.slider
+{
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    
+}
+.textpaid
+{
+    font-size: 30px;
+    color: aliceblue;
+    font-weight: bold;
+    
 }
 #textpict
 {
@@ -38,11 +95,18 @@ body
 }
 #camera
 {
-    margin: -1px;
-    margin-left: 280px;
+   
     
-    width: 320px;
-    height:230px;
+    width: 325px;
+    height:245px;
+    border: 3px solid black;
+}
+.camera2
+{
+   
+    margin-top:4px;
+    width: 325px;
+    height:245px;
     border: 3px solid black;
 }
 #tbh
@@ -55,9 +119,10 @@ body
 {
     color:firebrick;
 }
-.container
+.containers
 {
     height: 270px;
+    width:1200px;
     overflow: scroll;
     
 }

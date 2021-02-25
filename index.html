@@ -12,116 +12,176 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <body>
-       <div  class="card-body"> 
-                        <div class="booth"id="camera"> 
-                            <video id="video" width="100%" 
-                                height="100%" autoplay> 
-                            </video> 
+   
+         <div class="container">
+            <div class="row">
+             <div class="col-sm-4  mx-auto text-center">
+                 <div  class="card-body float-left ml-5"> 
+                        <div class="booth mx-auto"id="camera"> 
+                            <div class="camera">
+                                <video id="video">Video stream not available.</video>
+                            </div>
+                             
                         </div> 
-  
-                        <div id="button" class="text-right text-center " > 
+                     
+                        <div id="button mx-auto mt-1" class="text-right text-center " > 
+                        <div><button class="btn btn-success float-right px-3" id="startbutton">Capture</button></div>
+                           
                             
-                            <a href="#!" class="btn btn-success" onClick="start()">Start Cam</a> 
-                            <a href="#!" class="btn btn-danger" onClick="stop()"> Stop Cam </a>     
+                                
                         </div> 
                     </div> 
-    <input id="text" placeholder="Vehicle No">
+                
+            </div>
+                
+            <div class="col-sm-4 mt-3 text-center">
+                   <canvas id="canvas" class="camera2"></canvas>
+                
+            </div>    
+                
+                <div class="col-sm-4 text-center  my-auto">
+                    <div class="row">
+                    
+                        <input class="tab"  placeholder="Vehicle No"><button type="button" class="btn btn-danger float-left px-4">ADD</button></div>
+                    <div class="row py-2">
+                        <span class="textpaid ml-5 ">PAID</span>
+                         <label class="switch ml-2 my-2"><input type="checkbox">
+                        <span class="slider"></span>
+                        </label>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+                
+                
+
+             
+             <div class="row">
+                 
+<h3 id="tbh" class="text-center text-font mx-auto"><b>CUSTOMER LOGS</b></h3>
+                 </div>
+             
+             <div class="row">
+                     
+       
+       
+
      
-<h3 id="tbh" class="text-center text-font"><b>CUSTOMER LOGS</b></h2>
+        
+       
         
         
- <div class="container">                                                      
-  <table id="x" class="table table-bordered table-hover table-responsive-sm">
-    <thead class="text-center">
-      <tr class="bg-dark text-white" >
-        <th>Vehicle No</th>
-        <th>In Time</th>
-        <th>Out Time</th>
-        <th>Amount To be paid (RS)</th>
-      </tr>
-    </thead>
+ <div class="containers mb-3"> 
+     <table id="x" class="table table-bordered table-hover table-responsive-sm"> 
+        <thead style="position: sticky;top: 0" class="thead-dark"> 
+            <tr class=" bg-dark text-center text-white"> 
+                <th class="header" scope="col">Vehicle No</th> 
+                <th class="header" scope="col">In Time</th> 
+                <th class="header" scope="col">Out Time</th> 
+                <th class="header" scope="col">Amount To be paid (RS)</th> 
+                <th class="header" scope="col">Payment Status</th> 
+            </tr> 
+        </thead> 
+  
     <tbody class="text-center bg-white">
       <tr>
         <td>MH12AS1234</td>
         <td>09:00</td>
         <td>12:00</td>
         <td>20</td>
+          <td>Paid</td>
       </tr>
       <tr>
         <td>MH08AU1294</td>
         <td>13:00</td>
         <td></td>
-        <td></td>
+        <td></td><td>Unpaid</td>
       </tr>
       <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
         <tr>
         <td>MH91AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Unpaid</td>
       </tr>
         <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
         <tr>
         <td>MH08AU1294</td>
         <td>13:00</td>
         <td>14:00</td>
-        <td>20</td>
+        <td>20</td><td>Unpaid</td>
       </tr>
       <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
         <tr>
         <td>MH91AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Unpaid</td>
       </tr>
         <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
         <tr>
         <td>MH08AU1294</td>
         <td>13:00</td>
         <td>14:00</td>
-        <td>20</td>
+        <td>20</td><td>Unpaid</td>
       </tr>
       <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
         <tr>
         <td>MH91AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Unpaid</td>
       </tr>
         <tr>
         <td>MH01AU1234</td>
         <td>18:00</td>
         <td>21:00</td>
-        <td>30</td>
+        <td>30</td><td>Paid</td>
       </tr>
     </tbody>
   </table>
 </div>
+             
+             
+             </div>
+        </div>
+           
+            
+          
+        
+            
+               
+                 
+                
+              
+        
+
         
     
     </body>
