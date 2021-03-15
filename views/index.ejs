@@ -10,77 +10,96 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <body>
-       <div class="row">
-        <div  class="card-body"> 
-          <div class="booth"id="camera"> 
-              <video id="video" width="100%" 
-                  height="100%" autoplay> 
-              </video> 
-          </div> 
-
-          <div id="button" class="text-right text-center " > 
-              
-              <a href="#!" class="btn btn-success" onClick="start()">Start Cam</a> 
-              <a href="#!" class="btn btn-danger" onClick="stop()"> Stop Cam </a>     
-          </div> 
-      </div> 
-      <div id="text">
-        <form action="/" method="POST">
-          <input name="vehicleNo" placeholder="Vehicle No">
-          <button type="submit">Add</button>
-        </form>
-      </div>
-       </div>
-
-        <h3 id="tbh" class="text-center text-font"><b>CUSTOMER LOGS</b></h2>
-        <div class="row">
-            <div class="container">                                                      
-              <table id="x" class="table table-bordered table-hover table-responsive-sm">
-                <thead class="text-center">
-                  <tr class="bg-dark text-white" >
-                    <th>Vehicle No</th>
-                    <th>In Time</th>
-                    <th>Out Time</th>
-                    <th>Amount To be paid (RS)</th>
-                    <th>Payment Status</th>
-                  </tr>
-                </thead>
-                <tbody class="text-center bg-white">
-                  <% rows.forEach(result=>{%>
-                    <tr>
-                      <td><%= result.vehicle_no %></td>
-                      <td><% let date = new Date(result.in_time) %>
-                        <% let tmp=date.toString(); %>
-                        <% let res=tmp.split(" "); %>
-                        <%= res[4] %>
-                      </td>
-                      <td>
-                        <%if(result.out_time != 0){date = new Date(result.out_time);tmp=date.toString();res=tmp.split(" "); res=res[4]} else {res='-'}%>
-                        <%= res %>
-                      </td>
-                      <td>
-                        <% let amount=0 %>
-                        <% if(result.out_time > 0) {%>
-                        <% amount=result.out_time-result.in_time %>
-                        <% amount=(amount/(1000*60)) %>
-                        <% amount=Math.round(amount)} %>
-                        <%= amount %>
-                      </td>
-                      <td>
-                        <% let pd="Unpaid" %>
-                        <% if(result.paid > 0){%>
-                        <% pd="Paid" } %>
-                        <%= pd %>
-                      </td>
-                    </tr>
-                  <%})%>
-                </tbody>
+   
+         <div class="container">
+            <div class="row">
+             <div class="col-sm-4  mx-auto text-center">
+                 <div  class="card-body float-left ml-5"> 
+                        <div class="booth mx-auto"id="camera"> 
+                            <div class="camera">
+                                <video id="video">Video stream not available.</video>
+                            </div>
+                             
+                        </div> 
+                     
+                        <div id="button mx-auto mt-1" class="text-right text-center " > 
+                        <div><button class="btn btn-success float-right px-3" id="startbutton">Capture</button></div>     
+                        </div> 
+                    </div> 
+            </div>
+                
+            <div class="col-sm-4 mt-3 text-center">
+                   <canvas id="canvas" class="camera2"></canvas>
+            </div>    
+                
+                <div class="col-sm-4 text-center  my-auto">
+                    <form action="/" method="POST">
+                        <div class="row">
+                          <input class="tab" name="VehicleNo"  placeholder="VehicleNo">
+                          <button type="submit" class="btn btn-danger float-left px-4">ADD</button>
+                      </div>
+                      <div class="row py-2">
+                        <span class="textpaid ml-5 ">PAID</span>
+                          <label class="switch ml-2 my-2"><input name="isPaid" type="checkbox">
+                        <span class="slider"></span>
+                        </label>
+                      </div>
+                    </form>
+                </div> 
+            </div>
+                
+             <div class="row">     
+                  <h3 id="tbh" class="text-center text-font mx-auto"><b>CUSTOMER LOGS</b></h3>
+             </div>
+             
+             <div class="row">
+              <div class="containers mb-3"> 
+                <table id="x" class="table table-bordered table-hover table-responsive-sm"> 
+                  <thead style="position: sticky;top: 0" class="thead-dark"> 
+                    <tr class=" bg-dark text-center text-white"> 
+                      <th class="header" scope="col">Vehicle No</th> 
+                      <th class="header" scope="col">In Time</th> 
+                      <th class="header" scope="col">Out Time</th> 
+                      <th class="header" scope="col">Amount To be paid (RS)</th> 
+                      <th class="header" scope="col">Payment Status</th> 
+                    </tr> 
+                  </thead> 
+                  <tbody class="text-center bg-white">
+                    <% rows.forEach(result=>{%>
+                      <tr>
+                        <td><%= result.vehicle_no %></td>
+                        <td><% let date = new Date(result.in_time) %>
+                          <% let tmp=date.toString(); %>
+                          <% let res=tmp.split(" "); %>
+                          <%= res[4] %>
+                        </td>
+                        <td>
+                          <%if(result.out_time != 0){date = new Date(result.out_time);tmp=date.toString();res=tmp.split(" "); res=res[4]} else {res='-'}%>
+                          <%= res %>
+                        </td>
+                        <td>
+                          <% let amount=0 %>
+                          <% if(result.out_time > 0) {%>
+                          <% amount=result.out_time-result.in_time %>
+                          <% amount=(amount/(1000*60)) %>
+                          <% amount=Math.round(amount)} %>
+                          <%= amount %>
+                        </td>
+                        <td>
+                          <% let pd="Unpaid" %>
+                          <% if(result.isPaid > 0){%>
+                          <% pd="Paid" } %>
+                          <%= pd %>
+                        </td>
+                      </tr>
+                    <%})%>
+                  </tbody>
               </table>
+            </div>          
             </div>
         </div>
-                
-    
     </body>
     </head>
 </html>
