@@ -60,6 +60,7 @@
 
             var data = canvas.toDataURL('image/png');
             photo.setAttribute('src', data);
+        
         }
 
         function takepicture() {
@@ -68,13 +69,22 @@
                 canvas.width = width;
                 canvas.height = height;
                 context.drawImage(video, 0, 0, width, height);
-
+                var d = new Date();
+                
                 var data = canvas.toDataURL('image/png');
+                 downloadImage(data, d.getTime());
                 photo.setAttribute('src', data);
             } else {
                 clearphoto();
             }
         }
+        function downloadImage(data, filename = 'untitled.jpeg') {
+            var a = document.createElement('a');
+    a.href = data;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+}
 
         window.addEventListener('load', startup, false);
     })();
