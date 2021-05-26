@@ -28,6 +28,18 @@ body
 
     
 }
+
+.custom-file-input.selected:lang(en)::after {
+      content: "" !important;
+    }
+
+    .custom-file {
+      overflow: hidden;
+    }
+
+    .custom-file-input {
+      white-space: nowrap;
+    }
 .stk
 {
     position: sticky;top: 0;

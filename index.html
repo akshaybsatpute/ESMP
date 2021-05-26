@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="http://hongru.github.io/proj/canvas2image/canvas2image.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <body>
@@ -30,6 +31,18 @@
                             
                                 
                         </div> 
+                   <div class="container mx-auto">
+                       <div class="input-group mx-auto py-3">
+                           <div class="custom-file float-left">
+                               <input type="file" class="custom-file-input" id="customFileInput" aria-describedby="customFileInput">
+                               <label class="custom-file-label" for="customFileInput">Select</label>
+                           </div>
+                           <div class="input-group-append ">
+                               <button class="btn btn-primary px-3 " type="button" id="customFileInput">Upload</button>
+                           </div>
+                        </div>
+                     </div>
+                     
                     </div> 
                 
             </div>
@@ -42,7 +55,7 @@
                 <div class="col-sm-4 text-center  my-auto">
                     <div class="row">
                     
-                        <input class="tab"  placeholder="Vehicle No"><button type="button" class="btn btn-danger float-left px-4">ADD</button></div>
+                        <form><input class="tab"  placeholder="Vehicle No"></form><button type="button" class="btn btn-danger float-left px-4">ADD</button></div>
                     <div class="row py-2">
                         <span class="textpaid ml-5 ">PAID</span>
                          <label class="switch ml-2 my-2"><input type="checkbox">
@@ -175,7 +188,13 @@
             
           
         
-            
+   <script>
+    document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+      var name = document.getElementById("customFileInput").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = name
+    })
+  </script>         
                
                  
                 
